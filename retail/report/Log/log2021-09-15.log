@@ -1,0 +1,16 @@
+2021-09-15 16:01:04,176 - doconfini.py:[22] - [INFO] - read excel value [F:\25906\Petrochina_Retail_Test_Project] successed! 
+2021-09-15 16:02:41,587 - doconfini.py:[22] - [INFO] - read excel value [F:\25906\Petrochina_Retail_Test_Project] successed! 
+2021-09-15 16:28:02,700 - doconfini.py:[22] - [INFO] - read excel value [F:\25906\Petrochina_Retail_Test_Project] successed! 
+2021-09-15 16:30:52,899 - doconfini.py:[19] - [ERROR] - read file [F:\25906\Petrochina_Retail_Test_Project\retail\config.ini] for [project] failed , did not get the value
+Traceback (most recent call last):
+  File "F:\25906\Petrochina_Retail_Test_Project\retail\test_case\models\doconfini.py", line 17, in getConfValue
+    value = self.cf.get(section, name)
+  File "C:\Program Files\Python39\lib\configparser.py", line 781, in get
+    d = self._unify_values(section, vars)
+  File "C:\Program Files\Python39\lib\configparser.py", line 1149, in _unify_values
+    raise NoSectionError(section) from None
+configparser.NoSectionError: No section: 'project'
+2021-09-15 16:31:24,503 - doconfini.py:[22] - [INFO] - read excel value [F:\25906\Petrochina_Retail_Test_Project] successed! 
+2021-09-15 16:34:13,010 - doconfini.py:[22] - [INFO] - read excel value [F:\25906\Petrochina_Retail_Test_Project] successed! 
+2021-09-15 16:36:06,166 - doconfini.py:[22] - [INFO] - read excel value [F:\25906\Petrochina_Retail_Test_Project] successed! 
+2021-09-15 16:36:42,712 - doconfini.py:[22] - [INFO] - read excel value [F:\25906\Petrochina_Retail_Test_Project] successed! 
