@@ -2,6 +2,7 @@
 import logging
 import configparser
 from retail.test_case.models.log import Logger
+import os
 
 log = Logger(__name__, CmdLevel=logging.INFO, FileLevel=logging.INFO)
 
@@ -35,13 +36,13 @@ class DoConfIni(object):
             log.logger.info('write section' + section + 'with value ' + value + ' successed!')
 
 
-# if __name__ == '__main__':
-#     print(1)
-    # file_path = currPath
-    # print(file_path)
-    # read_config = DoConfIni()
-    #
-    # value = read_config.getConfValue(os.path.join(currPath, 'config.ini'), 'project', 'project_path')
-    # print(value)
-    #
-    # read_config.writeConfValue(os.path.join(currPath, 'config.ini'), 'tesesection', 'name', 'hello word')
+if __name__ == '__main__':
+    currPath = os.path.split(os.path.realpath(__file__))[0]
+    file_path = currPath
+    print(file_path)
+    read_config = DoConfIni()
+
+    value = read_config.getConfValue(os.path.join(currPath, 'config.ini'), 'project', 'project_path')
+    print(value)
+
+    read_config.writeConfValue(os.path.join(currPath, 'config.ini'), 'tesesection', 'name', 'hello word')

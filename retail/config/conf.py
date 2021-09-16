@@ -5,13 +5,13 @@ import sys
 from retail.test_case.models.doconfini import DoConfIni
 
 # 获取当前路径
-currPath1 = os.path.split(os.path.realpath(__file__))[0]
-print(currPath1)
+currPath = os.path.split(os.path.realpath(__file__))[0]
+print(currPath)
 currPath2 = os.path.dirname(os.path.dirname(__file__))
 print(currPath2)
 # 读配置文件获取项目路径
 readConfig = DoConfIni()
-proPath = readConfig.getConfValue(os.path.join(currPath1, 'config.ini'), 'project', 'project_path')
+proPath = readConfig.getConfValue(os.path.join(currPath, 'config.ini'), 'project', 'project_path')
 print(proPath)
 # 获取日志路径
 logPath = os.path.join(proPath, 'retail', 'report', 'Log')
