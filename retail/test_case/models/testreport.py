@@ -63,8 +63,9 @@ def runTc(discover):
     try:
         result = BeautifulReport(discover)
         result.report(filename=fileName, description='测试报告', log_path=conf.reportPath)
-    except Exception:
+    except Exception as e:
         log.logger.exception('Failed to generate test report', exc_info=True)
+        raise e
     else:
         log.logger.info('successed to generate test report [%s]' % fileName)
         return fileName
