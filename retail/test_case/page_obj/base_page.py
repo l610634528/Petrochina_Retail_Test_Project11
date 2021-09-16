@@ -50,3 +50,128 @@ class BasePage(object):
         try:
             self.driver.get(url)
             self.driver.implicitly_wait(10)
+        except Exception as e:
+            log.logger.exception(e, exc_info=True)
+            raise ValueError('%s address access error, please check！' % url)
+        else:
+            log.logger.info('%s is accessing address %s at line[46]' % (sys._getframe().f_code.co_name, url))
+
+    def open(self):
+        """
+
+        :return:
+        """
+        self._open(self.base_url)
+        log.logger.info('%s loading successed!' % self.base_url)
+        return self.base_url
+
+    # *loc 代表任意数量的位置参数
+    def findElement(self, *loc):
+        """
+        查找单一元素
+        :param loc:
+        :return:
+        """
+        try:
+            WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(loc))
+        except Exception as e:
+            log.logger.exception('finding element timeout!, details', exc_info=True)
+            raise e
+        else:
+            log.logger.info('The page of %s had already find the element %s' % (self, loc))
+            return self.driver.find_element(*loc)
+
+    # *loc 代表任意数量的位置参数
+    def findElements(self, *loc):
+        """
+        查找单一元素
+        :param loc:
+        :return:
+        """
+        try:
+            WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(loc))
+        except Exception as e:
+            log.logger.exception('finding element timeout!, details', exc_info=True)
+            raise e
+        else:
+            log.logger.info('The page of %s had already find the element %s' % (self, loc))
+            return self.driver.find_elements(*loc)
+
+    def inputValue(self, inputBox, value):
+        """
+        后期修改其他页面直接调用这个函数
+        :param inputBox:
+        :param value:
+        :return:
+        """
+        inputB = self.findElement(*inputBox)
+        try:
+            inputB.clear()
+            inputB.send_keys(value)
+        except Exception as e:
+            log.logger.exception('typing value error!', exc_info=True)
+            raise e
+        else:
+            log.logger.info('inputValue:[%s] is receiveing value [%s]' % (inputBox, value))
+
+    # 获取元素数据
+    def getValue(self, *loc):
+        """
+
+        :param loc:
+        :return:
+        """
+        element = self.findElement(*loc)
+        try:
+            value = element.text
+        except Exception:
+            value = element.get_attribute('value')
+            log.logger.info('reading the element [%s] value [%s]' % (loc, value))
+            return value
+        except:
+            log.logger.exception('read value failed', exc_info=True)
+            raise Exception
+        else:
+            log.logger.info('reading the element [%s] value [%s]' % (loc, value))
+            return value
+
+    def getValues(self, *loc):
+        """
+
+        :param loc:
+        :return:
+        """
+        value_list = []
+        try:
+            for element in self.findElements(*loc):
+                value = element.text
+                value_list.append(value)
+        except Exception as e:
+            log.logger.exception('read value failed', exc_info=True)
+            raise e
+        else:
+            log.logger.info('reading the element [%s] value [%s]' % (loc, value_list))
+            return value_list
+
+    # 执行js脚本
+    def jScript(self, src):
+        """
+
+        :param src:
+        :return:
+        """
+        try:
+            self.driver.excute_script(src)
+        except Exception as e:
+            log.logger.exception('execute js script [%s] failed ' % src)
+            raise e
+        else:
+            log.logger.info('execute js script [%s] successed ' % src)
+
+    # 判断元素是否存在
+    def isElementExist(self, element):
+        """
+
+        :param element:
+        :return:
+        """
