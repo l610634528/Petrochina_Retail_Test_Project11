@@ -24,16 +24,16 @@ class ModifyPw_TC(MyunitTest):
             num = num + 1
 
     def test_modify_password_len(self):
-        """旧密码非空,新密码长度小于位,确认密码非空,修改密码失败,弹窗提示"""
+        """旧密码非空,新密码长度小于4位,确认密码非空,修改密码失败,弹窗提示"""
         self.login.loginFunc()
         menu = PrimaryMenu(self.driver)
         menu.modifyPwMenu()  # 查找修改密码页面
         menu.modifyPw(menu.pwdList[0])  # 修改密码
         text = menu.errorDialog(menu.closeBtn)
-        self.assertIn('密码长度至少  位！', text, '提示信息错误')  # 密码长度不满足时断言提示信息
+        self.assertIn('密码长度至少4位！', text, '提示信息错误')  # 密码长度不满足时断言提示信息
 
     def test_modify_password_strebgth(self):
-        """旧密码非空,新密码长度大于且强度不够,确认密码非空,修改密码失败,弹窗提示"""
+        """旧密码非空,新密码长度大于4且强度不够,确认密码非空,修改密码失败,弹窗提示"""
         self.login.loginFunc()
         menu = PrimaryMenu(self.driver)
         menu.modifyPwMenu()  # 查找修改密码页面
@@ -42,7 +42,7 @@ class ModifyPw_TC(MyunitTest):
         self.assertIn('密码强度不够，请重新输入密码！', text, ' 密码强度不够，请重新输入密码！')  # 密码强度不满足时断言提示信息
 
     def test_modify_password_incorrect(self):
-        """旧密码不正确非空,新密码等于确认密码且满足条件,修改密码失败,弹窗提示"""
+        """旧密码不正确非空,新密码等于确认4密码且满足条件,修改密码失败,弹窗提示"""
         self.login.loginFunc()
         menu = PrimaryMenu(self.driver)
         menu.modifyPwMenu()  # 查找修改密码页面
@@ -51,7 +51,7 @@ class ModifyPw_TC(MyunitTest):
         self.assertIn('旧密码输入错误！', text, '旧密码输入错误！')  # 新密码和确认码不同时断言提示信息
 
     def test_modify_password_difference(self):
-        """旧密码非空,新密码不等于确认密码且新密码满足条件,修改密码失败,弹窗提示"""
+        """旧密码非空,新密码不等于4确认密码且新密码满足条件,修改密码失败,弹窗提示"""
         self.login.loginFunc()
         menu = PrimaryMenu(self.driver)
         menu.modifyPwMenu()  # 查找修改密码页面
