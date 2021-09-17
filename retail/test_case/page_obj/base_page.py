@@ -175,3 +175,59 @@ class BasePage(object):
         :param element:
         :return:
         """
+        try:
+            WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(element))
+        except:
+            # log.logger.exception('The element [%s] not exist', exc_info=True)
+            return False
+        else:
+            # log.logger.info('The element [%s] have existed!' %element)
+            return True
+
+    # 截图
+    def saveScreenShot(self, filename):
+        """
+
+        :param filename:
+        :return:
+        """
+        list_value = []
+        list = filename.split('.')
+        for value in list:
+            list_value.append(value)
+        if list_value[1] == 'png' or list_value[1] == 'jpg' or list_value[1] == 'PNG' or list_value[1] == 'JPG':
+            if 'fail' in list_value[0].split('_'):
+                try:
+                    self.driver.save_screenshot(os.path.join(conf.failImagePath, filename))
+                except Exception:
+                    log.logger.exception('save screenshot failed !', exc_info=True)
+                else:
+                    log.logger.info(
+                        'the file [%s]  save screenshot successed under [%s]' % (filename, conf.failImagePath))
+            elif 'pass' in list_value[0]:
+                try:
+                    self.driver.save_screenshot(os.path.join(conf.passImagePath, filename))
+                except Exception:
+                    log.logger.exception('save screenshot failed !', exc_info=True)
+                else:
+                    log.logger.info(
+                        'the file [%s]  save screenshot successed under [%s]' % (filename, conf.passImagePath))
+            else:
+                log.logger.info('save screenshot failed due to [%s] format incorrect' % filename)
+        else:
+            log.logger.info(
+                'the file name of [%s] format incorrect cause save screenshot failed, please check!' % filename)
+
+    # 接受错误提示框
+    def accept(self, *loc):
+        """
+
+        :param loc:
+        :return:
+        """
+        self.findElement(*loc).click()
+        log.logger.info('closed the error information fram successed!')
+
+
+if __name__ == '__main__':
+    pass
