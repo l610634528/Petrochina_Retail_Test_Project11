@@ -25,9 +25,9 @@ class SendMail(object):
                  receiver,
                  subject='Retail 系统测试报告',
                  server='smtp.qq.com',
-                 fromuser='@qq.com',
+                 fromuser='l610634528@163.com',
                  frompassword='gifhhsbgqyovbhhc',
-                 sender='@qq.com'):
+                 sender='610634528@qq.com'):
         """
 
         :param receiver:
