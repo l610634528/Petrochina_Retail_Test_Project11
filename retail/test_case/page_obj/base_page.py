@@ -32,7 +32,7 @@ class BasePage(object):
          (By.LINK_TEXT, eleData.readExcel(13, 3)),  # 积分规则/活动查询
          (By.LINK_TEXT, eleData.readExcel(14, 3))]  # 积分规则/活动申请
 
-    def __init__(self, driver, url='http://11.11.164.134:9081/rmms/modules/ep.rmms.portal/login/login.jsp'):
+    def __init__(self, driver, url=conf.url):
         """
 
         :param driver:

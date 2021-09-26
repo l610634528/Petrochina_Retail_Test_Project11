@@ -1,7 +1,4 @@
 import os
-import sys
-import os
-import sys
 from retail.test_case.models.doconfini import DoConfIni
 
 # 获取当前路径
@@ -18,7 +15,7 @@ logPath = os.path.join(proPath, 'retail', 'report', 'Log')
 
 # 测试用例路径
 tcPath = os.path.join(proPath, 'retail', 'test_case')
-
+url = 'https://www.baidu.com'
 # 获取报告路径
 reportPath = os.path.join(proPath, 'retail', 'report', 'TestReport')
 print(reportPath)
