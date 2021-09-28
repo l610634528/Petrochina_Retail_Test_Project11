@@ -1,6 +1,4 @@
 """存放driver"""
-from selenium.webdriver.chrome.webdriver import WebDriver
-
 """
 Code description:save all driver info
 Create time:

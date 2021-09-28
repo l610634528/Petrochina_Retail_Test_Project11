@@ -1,0 +1,6 @@
+2021-09-28 10:19:00,994 - doconfini.py:[23] - [INFO] - read excel value [F:\25906\Petrochina_Retail_Test_Project] successed! 
+2021-09-28 10:19:01,095 - testreport.py:[39] - [INFO] - successed to generate test report [F:\25906\Petrochina_Retail_Test_Project\retail\report\TestReport\report2021-09-28 10_19_01.html]
+2021-09-28 10:19:32,512 - doconfini.py:[23] - [INFO] - read excel value [F:\25906\Petrochina_Retail_Test_Project] successed! 
+2021-09-28 10:19:32,560 - testreport.py:[39] - [INFO] - successed to generate test report [F:\25906\Petrochina_Retail_Test_Project\retail\report\TestReport\report2021-09-28 10_19_32.html]
+2021-09-28 10:22:27,908 - doconfini.py:[23] - [INFO] - read excel value [F:\25906\Petrochina_Retail_Test_Project] successed! 
+2021-09-28 10:22:27,954 - testreport.py:[39] - [INFO] - successed to generate test report [F:\25906\Petrochina_Retail_Test_Project\retail\report\TestReport\report2021-09-28 10_22_27.html]

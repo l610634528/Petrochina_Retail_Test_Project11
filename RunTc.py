@@ -16,4 +16,4 @@ if __name__ == '__main__':
     test_suite = unittest.defaultTestLoader.discover(tcPath, pattern='.*Tc.py')
     runner.run(test_suite)
     fp.close()
-    SendMail.sendEmail(fileName)
+    # SendMail.sendEmail(fileName)
